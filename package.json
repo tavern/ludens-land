@@ -1,0 +1,29 @@
+{
+  "name": "ludens-land",
+  "version": "0.0.0",
+  "main": "dist/main.es.js",
+  "exports": {
+    ".": "./dist/main.es.js"
+  },
+  "types": "types/main.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "vite-tauri": "vite-tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.0-beta.8",
+    "lit": "^2.0.0"
+  },
+  "devDependencies": {
+    "ts-lit-plugin": "^1.0.5",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.4",
+    "vite-plugin-checker": "^0.3.4",
+    "vite-plugin-host": "^1.0.2"
+  }
+}
