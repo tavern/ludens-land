@@ -1,0 +1,17 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Theming",
+  "steps": [
+    {
+      "file": "src/main.css",
+      "description": "Define variables here at `main.css`",
+      "line": 3
+    },
+    {
+      "file": "src/molecules/button/styles.ts",
+      "description": "Use them on the components on the styles property via css's `var()` syntax.",
+      "line": 10
+    }
+  ],
+  "ref": "main"
+}
