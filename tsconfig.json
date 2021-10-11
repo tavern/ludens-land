@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "lib": ["es2017", "dom", "dom.iterable"],
+    "lib": ["es5", "dom", "dom.iterable", "scripthost"],
     "declaration": true,
     "isolatedModules": false,
     "emitDeclarationOnly": false,
@@ -20,5 +20,7 @@
     "plugins": [{ "name": "ts-lit-plugin" }]
   },
   "include": ["src/**/*.ts"],
-  "exclude": []
+  "exclude": [],
+  "typeRoots": ["./node_modules/phaser/types"],
+  "types": ["Phaser"]
 }

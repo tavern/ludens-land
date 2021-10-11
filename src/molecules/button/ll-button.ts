@@ -1,19 +1,10 @@
-import { css, html, LitElement } from 'lit'
+import { html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
+import styles from './styles'
 
 @customElement('ll-button')
 export class LLButton extends LitElement {
-  static styles = [
-    css`
-      :host {
-        display: inline-block;
-      }
-      button {
-        border: none;
-        background-color: var(--color-primary);
-      }
-    `,
-  ]
+  static styles = [styles]
 
   @property({ type: String })
   text: string = ''

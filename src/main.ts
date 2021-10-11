@@ -1,52 +1,59 @@
-import { css, html, LitElement } from 'lit'
+import { css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import './molecules/ll-button'
+import config from './config'
 
-/**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
- */
 @customElement('ludens-land')
 export class LudensLand extends LitElement {
   static styles = [
     css`
       :host {
         display: block;
-        border: solid 1px gray;
-        padding: 16px;
-        max-width: 800px;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
       }
     `,
   ]
 
-  /**
-   * The name to say "Hello" to.
-   */
-  @property()
-  name = 'World'
+  @property({ attribute: false })
+  private _gameRoot: HTMLElement
 
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  count = 0
+  @property({ attribute: false })
+  private _Game?: Phaser.Game
+
+  firstUpdated() {
+    console.log('this.renderRoot')
+    this._Game = new Phaser.Game({
+      ...config,
+      scene: {
+        preload() {},
+        create() {
+          const particles = this.add.particles('blue')
+
+          particles.createEmitter({
+            speed: 100,
+            scale: { start: 1, end: 0 },
+            blendMode: 'ADD',
+          })
+        },
+      },
+      scale: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+      parent: this._gameRoot,
+    })
+    console.log('this._Game', this._Game)
+  }
+
+  constructor() {
+    super()
+    this._gameRoot = document.getElementById('ludens-land') as HTMLElement
+  }
 
   render() {
-    return html`
-      <h1>Hello, ${this.name}!</h1>
-      <ll-button @click=${this._onClick} part="button">Click Count: ${this.count}</ll-button>
-      <slot></slot>
-    `
-  }
-
-  private _onClick() {
-    this.count++
-  }
-
-  foo(): string {
-    return 'foo'
+    return null
   }
 }
 
